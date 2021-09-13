@@ -1,0 +1,66 @@
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input
+        type="hidden"
+        name="inventoryDetailId"
+        [value]="service.formData.inventoryDetailId"
+    >
+    <div class="form-group">
+        <label>Product Name</label>
+        <input
+            class="form-control form-control-lg"
+            placeholder="Full Name"
+            name="productName"
+            #productName="ngModel"
+            [(ngModel)]="service.formData.productName"
+            required
+            [class.invalid]="productName.invalid && productName.touched" 
+        >
+    </div>
+    <div class="form-group">
+        <label>SKU</label>
+        <input
+            class="form-control form-control-lg"
+            placeholder="12 Digit SKU Number"
+            name="sku"
+            #sku="ngModel"
+            [(ngModel)]="service.formData.sku"
+            required
+            maxlength="12"
+            minlength="12"
+            [class.invalid]="sku.invalid && sku.touched" 
+        >
+    </div>
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label>Quantity</label>
+            <input
+                class="form-control form-control-lg"
+                placeholder="Quantity"
+                name="quantity"
+                #quantity="ngModel"
+                [(ngModel)]="service.formData.quantity"
+                required
+                maxlength="3"
+                minlength="3"
+                [class.invalid]="quantity.invalid && quantity.touched" 
+            >    
+        </div>
+        <div class="form-group col-md-6">
+            <label>Expiry Date</label>
+            <input
+                class="form-control form-control-lg"
+                placeholder="MM/YY"
+                name="expirationDate"
+                #expirationDate="ngModel"
+                [(ngModel)]="service.formData.expirationDate"
+                required
+                maxlength="5"
+                minlength="5"
+                [class.invalid]="expirationDate.invalid && expirationDate.touched" 
+            >
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">SUBMIT</button>
+    </div>
+</form>

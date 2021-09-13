@@ -1,0 +1,33 @@
+<div class="jumbotron py-1">
+    <h1 class="display-4 text-center">Inventory Detail Register</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <app-inventory-detail></app-inventory-detail>
+    </div>
+    <div class="col-md-6">
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>Product Name</th>
+                    <th>SKU Number</th>
+                    <th>Quantity</th>
+                    <th>Exp. Date</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let inv of service.list">
+                    <td (click)="populateForm(inv)">{{ inv.productName }}</td>
+                    <td (click)="populateForm(inv)">{{ inv.sku }}</td>
+                    <td (click)="populateForm(inv)">{{ inv.quantity }}</td>
+                    <td (click)="populateForm(inv)">{{ inv.expirationDate }}</td>
+                    <td>
+                        <i class="fa fa-trash-o fa-lg text-danger" (click)="onDelete(inv.inventoryDetailId)"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
